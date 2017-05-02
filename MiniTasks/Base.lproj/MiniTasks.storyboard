@@ -138,7 +138,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJv-KW-E9x">
-                                <rect key="frame" x="0.0" y="101" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="155" width="375" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="tmh-6c-QkG"/>
+                                </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5C-9M-ZOh">
                                 <rect key="frame" x="16" y="581" width="343" height="66"/>
@@ -160,25 +163,48 @@
                                     <!--2017-04-30 11:02:57 +0000-->
                                 </date>
                             </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add an item" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkv-1F-Vn7">
+                                <rect key="frame" x="16" y="117" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="eYm-Rv-Yiw"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vS-UZ-tv6">
+                                <rect key="frame" x="326" y="120" width="25" height="25"/>
+                                <state key="normal" image="Plus_000000_100"/>
+                                <connections>
+                                    <action selector="addItemButton:" destination="78M-UM-rNZ" eventType="touchUpInside" id="OKa-2I-8d7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dJv-KW-E9x" firstAttribute="top" secondItem="00x-1H-u8Z" secondAttribute="bottom" constant="31" id="1kj-3R-6Yh"/>
                             <constraint firstAttribute="bottom" secondItem="r5C-9M-ZOh" secondAttribute="bottom" constant="20" symbolic="YES" id="3CA-gG-Bcd"/>
-                            <constraint firstItem="dJv-KW-E9x" firstAttribute="leading" secondItem="2G4-y8-rsi" secondAttribute="leading" id="AVk-xK-A0r"/>
-                            <constraint firstItem="LcU-gt-jsU" firstAttribute="leading" secondItem="dJv-KW-E9x" secondAttribute="leading" id="DDs-62-bEv"/>
-                            <constraint firstItem="LcU-gt-jsU" firstAttribute="top" secondItem="dJv-KW-E9x" secondAttribute="bottom" constant="7" id="DL6-pg-ybQ"/>
+                            <constraint firstItem="9vS-UZ-tv6" firstAttribute="top" secondItem="f92-7e-B4A" secondAttribute="bottom" constant="100" id="BA2-ec-rI3"/>
                             <constraint firstItem="r5C-9M-ZOh" firstAttribute="leading" secondItem="00x-1H-u8Z" secondAttribute="leading" id="FsU-ij-WjU"/>
+                            <constraint firstItem="dJv-KW-E9x" firstAttribute="leading" secondItem="2G4-y8-rsi" secondAttribute="leading" id="GBj-8n-zXb"/>
+                            <constraint firstItem="LcU-gt-jsU" firstAttribute="top" secondItem="dJv-KW-E9x" secondAttribute="bottom" constant="7" id="Gq8-lX-3oe"/>
                             <constraint firstItem="r5C-9M-ZOh" firstAttribute="centerX" secondItem="3y1-hF-p3m" secondAttribute="centerX" id="Jq5-bu-3ci"/>
                             <constraint firstItem="3y1-hF-p3m" firstAttribute="centerX" secondItem="2G4-y8-rsi" secondAttribute="centerX" id="MsG-M2-aaw"/>
+                            <constraint firstItem="dJv-KW-E9x" firstAttribute="trailing" secondItem="LcU-gt-jsU" secondAttribute="trailing" id="NxV-CC-ODt"/>
+                            <constraint firstItem="gkv-1F-Vn7" firstAttribute="centerY" secondItem="9vS-UZ-tv6" secondAttribute="centerY" id="P0f-ow-7ZS"/>
                             <constraint firstItem="00x-1H-u8Z" firstAttribute="top" secondItem="f92-7e-B4A" secondAttribute="bottom" id="VaI-g8-FKf"/>
                             <constraint firstItem="r5C-9M-ZOh" firstAttribute="centerX" secondItem="LcU-gt-jsU" secondAttribute="centerX" id="Zd0-kt-AX7"/>
                             <constraint firstItem="3y1-hF-p3m" firstAttribute="top" secondItem="f92-7e-B4A" secondAttribute="bottom" constant="8" id="cfN-1a-SAR"/>
-                            <constraint firstItem="LcU-gt-jsU" firstAttribute="trailing" secondItem="dJv-KW-E9x" secondAttribute="trailing" id="eQc-AP-oNN"/>
+                            <constraint firstItem="dJv-KW-E9x" firstAttribute="top" secondItem="00x-1H-u8Z" secondAttribute="bottom" constant="85" id="h0q-ta-A6y"/>
+                            <constraint firstItem="9vS-UZ-tv6" firstAttribute="trailing" secondItem="2G4-y8-rsi" secondAttribute="trailingMargin" constant="-8" id="hHJ-0i-squ"/>
+                            <constraint firstItem="gkv-1F-Vn7" firstAttribute="leading" secondItem="00x-1H-u8Z" secondAttribute="leading" id="ilB-l5-Hn9"/>
                             <constraint firstItem="00x-1H-u8Z" firstAttribute="leading" secondItem="2G4-y8-rsi" secondAttribute="leadingMargin" id="kBY-6U-x0j"/>
+                            <constraint firstItem="9vS-UZ-tv6" firstAttribute="leading" secondItem="gkv-1F-Vn7" secondAttribute="trailing" constant="-33" id="kuK-jd-ZXG"/>
+                            <constraint firstItem="dJv-KW-E9x" firstAttribute="leading" secondItem="LcU-gt-jsU" secondAttribute="leading" id="v4y-s5-J8c"/>
+                            <constraint firstItem="dJv-KW-E9x" firstAttribute="top" secondItem="gkv-1F-Vn7" secondAttribute="bottom" constant="8" symbolic="YES" id="wz3-NU-r0E"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addItemField" destination="gkv-1F-Vn7" id="hl1-lf-pqy"/>
                         <outlet property="addTaskButton" destination="r5C-9M-ZOh" id="4Ee-it-p0i"/>
                         <outlet property="datePicker" destination="LcU-gt-jsU" id="Pex-X3-mKJ"/>
                         <outlet property="pickerView" destination="dJv-KW-E9x" id="1wJ-IE-bby"/>
@@ -194,7 +220,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qUm-5f-LW6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hxY-Zw-BAJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxY-Zw-BAJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

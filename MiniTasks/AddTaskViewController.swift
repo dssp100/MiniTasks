@@ -10,6 +10,8 @@ import UIKit
 
 var taskArray = [String]()
 var dateArray = [String]()
+let defaults = UserDefaults.standard
+
 
 class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
@@ -22,9 +24,22 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var addTaskButton: UIButton!
     
+    @IBOutlet weak var addItemField: UITextField!
+
+    
+    
+    
+    
     //# MARK: - Variables
+
     
     var task = ["Select Task", "Go to Dentist", "Meet Friends", "Iron Cloths", "Call Parents", "Pay Bils", "Paint Desk", "Call Insurance Company", "Buy Gifts for Wife", "Take Kids Out", "Go for Swimming lesson", "Play Tennis", "Clean the House", "Track Package"]
+    
+//    let myTasks = defaults.array(forKey: "selectedTask")
+    
+
+
+    
     
     var dateFormatter = DateFormatter()
     
@@ -52,7 +67,7 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         addTaskButton.layer.borderWidth = 3
         addTaskButton.clipsToBounds = true
         
-        
+
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
@@ -65,7 +80,9 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        
         return task[row]
     }
     
@@ -93,14 +110,33 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
     @IBAction func addTask(_ sender: Any)
     {
+        
+        taskArray.append(selectedTask)
+        UserDefaults.standard.set(taskArray, forKey: "myTasks")
+        defaults.synchronize()
+        
         let date = datePicker.date
         let dateStr = dateFormatter.string(from: date)
         dateArray.append(dateStr)
-        
-        taskArray.append(selectedTask)
+
         
         dismiss(animated: true, completion: nil)
     }
+    
+
+
+    @IBAction func addItemButton(_ sender: Any)
+    {
+        if addItemField.text != ""
+        {
+        task.append(addItemField.text!)
+        addItemField.text = ""
+        
+        print(task)
+        pickerView.reloadAllComponents()
+        }
+    }
+    
     
     //# FIXME: - Bug
 }

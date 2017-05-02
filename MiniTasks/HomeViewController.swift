@@ -19,8 +19,6 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     //# MARK: - Variables
     
-
-    
     
     //# MARK: - Functions
     
@@ -29,6 +27,7 @@ class HomeViewController: UIViewController, UITableViewDataSource
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+        print(defaults.array(forKey: ("myTasks"))!)
     }
     
     
@@ -43,6 +42,8 @@ class HomeViewController: UIViewController, UITableViewDataSource
         addButton.layer.borderColor = UIColor.white.cgColor
         
         tableView.dataSource = self
+        
+        tableView.reloadData()
 
     }
     
@@ -60,10 +61,25 @@ class HomeViewController: UIViewController, UITableViewDataSource
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         
-        cell.textLabel?.text = ("\(indexPath.row + 1). \(taskArray[indexPath.row])")
+        let array = defaults.array(forKey: ("myTasks"))
+        if let array = array
+        {
+        cell.textLabel?.text = ("\(indexPath.row + 1). \(array[indexPath.row])")
+        print(array)
+        }
+        
         cell.detailTextLabel?.text = dateArray[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == UITableViewCellEditingStyle.delete
+        {
+            taskArray.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
     
     //# MARK: - Actions
