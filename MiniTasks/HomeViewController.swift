@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     //# MARK: - Variables
     
+    //var tasks = [String]()
     
     //# MARK: - Functions
     
@@ -28,13 +29,13 @@ class HomeViewController: UIViewController, UITableViewDataSource
         
         tableView.reloadData()
         print(defaults.array(forKey: ("myTasks"))!)
+
     }
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         
         addButton.layer.cornerRadius = 25
         addButton.clipsToBounds = true
@@ -61,12 +62,7 @@ class HomeViewController: UIViewController, UITableViewDataSource
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         
-        let array = defaults.array(forKey: ("myTasks"))
-        if let array = array
-        {
-        cell.textLabel?.text = ("\(indexPath.row + 1). \(array[indexPath.row])")
-        print(array)
-        }
+        cell.textLabel?.text = ("\(indexPath.row + 1). \(taskArray[indexPath.row])")
         
         cell.detailTextLabel?.text = dateArray[indexPath.row]
         

@@ -110,9 +110,9 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
     @IBAction func addTask(_ sender: Any)
     {
-        
+        //taskArray = defaults.array(forKey: "myTasks") as! [String]
         taskArray.append(selectedTask)
-        UserDefaults.standard.set(taskArray, forKey: "myTasks")
+        //defaults.set(taskArray, forKey: "myTasks")
         defaults.synchronize()
         
         let date = datePicker.date
