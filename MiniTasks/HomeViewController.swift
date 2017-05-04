@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class HomeViewController: UIViewController, UITableViewDataSource
 {
     //# MARK: - Outlets
@@ -19,8 +20,6 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     //# MARK: - Variables
     
-    //var tasks = [String]()
-    
     //# MARK: - Functions
     
     override func viewWillAppear(_ animated: Bool)
@@ -28,8 +27,9 @@ class HomeViewController: UIViewController, UITableViewDataSource
         super.viewWillAppear(animated)
         
         tableView.reloadData()
-        print(defaults.array(forKey: ("myTasks"))!)
-
+        
+        print(defaults.stringArray(forKey: "taskArray") ?? [String]())
+        print(defaults.stringArray(forKey: "dateArray") ?? [String]())
     }
     
     
@@ -45,7 +45,6 @@ class HomeViewController: UIViewController, UITableViewDataSource
         tableView.dataSource = self
         
         tableView.reloadData()
-
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
@@ -60,11 +59,18 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        
+        let task = defaults.stringArray(forKey: "taskArray") ?? [String]()
+        let date = defaults.stringArray(forKey: "dateArray") ?? [String]()
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         
-        cell.textLabel?.text = ("\(indexPath.row + 1). \(taskArray[indexPath.row])")
+        cell.textLabel?.text = ("\(indexPath.row + 1). \(task[indexPath.row])")
         
-        cell.detailTextLabel?.text = dateArray[indexPath.row]
+        cell.detailTextLabel?.text = date[indexPath.row]
+        
+        
         
         return cell
     }
@@ -88,6 +94,6 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     
     //# FIXME: - Bug
-
+    
 }
 

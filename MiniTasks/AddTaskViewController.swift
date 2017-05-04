@@ -10,6 +10,7 @@ import UIKit
 
 var taskArray = [String]()
 var dateArray = [String]()
+
 let defaults = UserDefaults.standard
 
 
@@ -34,12 +35,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
     
     var task = ["Select Task", "Go to Dentist", "Meet Friends", "Iron Cloths", "Call Parents", "Pay Bils", "Paint Desk", "Call Insurance Company", "Buy Gifts for Wife", "Take Kids Out", "Go for Swimming lesson", "Play Tennis", "Clean the House", "Track Package"]
-    
-//    let myTasks = defaults.array(forKey: "selectedTask")
-    
-
-
-    
     
     var dateFormatter = DateFormatter()
     
@@ -98,27 +93,24 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
             selectedTask = task[row]
         }
-        
-        //print(task[row])
+
     }
     
     
     //# MARK: - Actions
-    
-    
-    //# TODO: - Add features
+
 
     @IBAction func addTask(_ sender: Any)
     {
-        //taskArray = defaults.array(forKey: "myTasks") as! [String]
         taskArray.append(selectedTask)
-        //defaults.set(taskArray, forKey: "myTasks")
-        defaults.synchronize()
+
         
         let date = datePicker.date
         let dateStr = dateFormatter.string(from: date)
         dateArray.append(dateStr)
-
+        
+        defaults.set(taskArray, forKey: "taskArray")
+        defaults.set(dateArray, forKey: "dateArray")
         
         dismiss(animated: true, completion: nil)
     }
@@ -137,6 +129,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
-    
+    //# TODO: - Add features
     //# FIXME: - Bug
 }
