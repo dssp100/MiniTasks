@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class HomeViewController: UIViewController, UITableViewDataSource
 {
     //# MARK: - Outlets
@@ -17,10 +16,8 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     @IBOutlet weak var addButton: UIButton!
     
-    
     //# MARK: - Variables
 
-    
     //# MARK: - Functions
     
     override func viewWillAppear(_ animated: Bool)

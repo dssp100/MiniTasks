@@ -27,16 +27,13 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var addItemField: UITextField!
 
-    
     //# MARK: - Variables
 
-    
     var task = ["Select Task", "Go to Dentist", "Meet Friends", "Iron Cloths", "Call Parents", "Pay Bils", "Paint Desk", "Call Insurance Company", "Buy Gifts for Wife", "Take Kids Out", "Go for Swimming lesson", "Play Tennis", "Clean the House", "Track Package"]
     
     var dateFormatter = DateFormatter()
     
     var selectedTask = ""
-    
     
     //# MARK: - Functions
     
@@ -45,13 +42,9 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         super.viewDidLoad()
         
         pickerView.dataSource = self
-        
         pickerView.delegate = self
-        
         addTaskButton.isEnabled = false
-        
         datePicker.minimumDate = Date()
-        
         dateFormatter.dateFormat = ("EE dd MMM yyyy @ HH:mm")
         
         addTaskButton.layer.cornerRadius = 10
@@ -61,8 +54,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         taskArray = (defaults.stringArray(forKey: "taskArray") ?? [String]())
         dateArray = (defaults.stringArray(forKey: "dateArray") ?? [String]())
-        
-
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
@@ -77,7 +68,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
-        
         return task[row]
     }
     
@@ -90,12 +80,9 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         else
         {
             addTaskButton.isEnabled = true
-        
             selectedTask = task[row]
         }
-
     }
-    
     
     //# MARK: - Actions
 
@@ -104,7 +91,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     {
         taskArray.append(selectedTask)
 
-        
         let date = datePicker.date
         let dateStr = dateFormatter.string(from: date)
         dateArray.append(dateStr)
@@ -115,8 +101,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         dismiss(animated: true, completion: nil)
     }
     
-
-
     @IBAction func addItemButton(_ sender: Any)
     {
         if addItemField.text != ""
@@ -130,5 +114,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     //# TODO: - Add features
+    
     //# FIXME: - Bug
 }
