@@ -69,7 +69,13 @@ class HomeViewController: UIViewController, UITableViewDataSource
         if editingStyle == UITableViewCellEditingStyle.delete
         {
             taskArray.remove(at: indexPath.row)
+            dateArray.remove(at: indexPath.row)
+            
+            defaults.set(taskArray, forKey: "taskArray")
+            defaults.set(dateArray, forKey: "dateArray")
+            
             tableView.reloadData()
+            
         }
     }
     
