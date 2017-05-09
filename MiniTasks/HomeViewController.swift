@@ -19,9 +19,7 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     
     //# MARK: - Variables
-    
-    var taskArray = [String]()
-    var dateArray = [String]()
+
     
     //# MARK: - Functions
     

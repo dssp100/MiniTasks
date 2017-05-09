@@ -28,9 +28,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var addItemField: UITextField!
 
     
-    
-    
-    
     //# MARK: - Variables
 
     
@@ -61,6 +58,9 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         addTaskButton.layer.borderColor = UIColor.white.cgColor
         addTaskButton.layer.borderWidth = 3
         addTaskButton.clipsToBounds = true
+        
+        taskArray = (defaults.stringArray(forKey: "taskArray") ?? [String]())
+        dateArray = (defaults.stringArray(forKey: "dateArray") ?? [String]())
         
 
     }
