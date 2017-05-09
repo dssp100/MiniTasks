@@ -20,30 +20,28 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     //# MARK: - Variables
     
+    var taskArray = [String]()
+    var dateArray = [String]()
+    
     //# MARK: - Functions
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        
+        tableView.dataSource = self
+        taskArray = (defaults.stringArray(forKey: "taskArray") ?? [String]())
+        dateArray = (defaults.stringArray(forKey: "dateArray") ?? [String]())
         tableView.reloadData()
-        
-        print(defaults.stringArray(forKey: "taskArray") ?? [String]())
-        print(defaults.stringArray(forKey: "dateArray") ?? [String]())
     }
-    
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         addButton.layer.cornerRadius = 25
         addButton.clipsToBounds = true
         addButton.layer.borderWidth = 3
         addButton.layer.borderColor = UIColor.white.cgColor
-        
         tableView.dataSource = self
-        
         tableView.reloadData()
     }
     
@@ -59,19 +57,12 @@ class HomeViewController: UIViewController, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
-        let task = defaults.stringArray(forKey: "taskArray") ?? [String]()
-        let date = defaults.stringArray(forKey: "dateArray") ?? [String]()
-        
-        
+        let task = taskArray[indexPath.row]
+        let date = dateArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
-        
-        cell.textLabel?.text = ("\(indexPath.row + 1). \(task[indexPath.row])")
-        
-        cell.detailTextLabel?.text = date[indexPath.row]
-        
-        
-        
+        cell.textLabel?.text = ("\(indexPath.row + 1). \(task)")
+        cell.detailTextLabel?.text = date
+    
         return cell
     }
     
